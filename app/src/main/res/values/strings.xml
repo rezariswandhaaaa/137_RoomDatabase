@@ -8,4 +8,7 @@
     <string name="nama1">Nama Siswa :</string>
     <string name="alamat1">Alamat Siswa :</string>
     <string name="telpon1">Telpon siswa :</string>
+    <string name="required_field">* required fields</string>
+    <string name="btn_submit">Submit</string>
+    <string name="detail_siswa">Edit Siswa</string>
 </resources>
