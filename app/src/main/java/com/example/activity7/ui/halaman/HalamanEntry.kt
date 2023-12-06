@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,12 +26,41 @@ import com.example.activity7.R
 import com.example.activity7.model.DetailSiswa
 import com.example.activity7.model.EntryViewModel
 import com.example.activity7.model.PenyediaViewModel
+import com.example.activity7.model.UIStateSiswa
 import com.example.activity7.navigasi.DestinasiNavigasi
 import kotlinx.coroutines.launch
 
 object DestinasiEntry: DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = R.string.entry_siswa
+}
+
+@Composable
+fun EntrySiswaBody(
+    uiStateSiswa: UIStateSiswa,
+    onSiswaValueChange: (DetailSiswa) -> Unit,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+){
+    Column(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_Large)),
+        modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+    ) {
+        FormInputSiswa(
+            detailSiswa = uiStateSiswa.detailSiswa,
+            onValueChange = onSiswaValueChange,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Button(
+            onClick = onSaveClick,
+            enabled = uiStateSiswa.isEntryValid,
+            shape = MaterialTheme.shapes.small,
+            modifier = Modifier.fillMaxWidth()
+            
+        ) {
+            Text(stringResource(id = R.string.btn_submit))
+        }
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
