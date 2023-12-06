@@ -8,7 +8,8 @@ import com.example.activity7.data.Siswa
 import com.example.activity7.repositori.RepositoriSiswa
 
 class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel(){
-
+    var uiStateSiswa by mutableStateOf(UIStateSiswa())
+        private set
 }
 data class UIStateSiswa(
     val detailSiswa: DetailSiswa = DetailSiswa(),
