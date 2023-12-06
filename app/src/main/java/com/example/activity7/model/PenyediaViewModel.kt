@@ -9,14 +9,15 @@ import com.example.activity7.AplikasiSiswa
 object PenyediaViewModel {
     val Factory = viewModelFactory {
         initializer {
-            HomeViewModel(AplikasiSiswa().container.repositoriSiswa)
+            HomeViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
 
         initializer {
-            EntryViewModel(AplikasiSiswa().container.repositoriSiswa)
+            EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
     }
 }
 
-fun CreationExtras.aplikasiSiswa():AplikasiSiswa = (this)[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as AplikasiSiswa
+fun CreationExtras.aplikasiSiswa():AplikasiSiswa =
+    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as AplikasiSiswa)
 
